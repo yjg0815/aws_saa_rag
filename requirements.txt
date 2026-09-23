@@ -1,0 +1,16 @@
+# rag_common은 PyPI 패키지가 아니다.
+# - 로컬 개발: "pip install -e ../rag_common"으로 형제 디렉토리를 editable
+#   설치해서 쓴다(이 줄은 그 로컬 워크플로용 주석일 뿐, requirements.txt
+#   자체에는 로컬 경로를 넣지 않는다 — Streamlit Community Cloud는 연결된
+#   GitHub 레포 하나만 clone하기 때문에 "-e ../rag_common" 같은 상대경로는
+#   배포 환경에 존재하지 않아 설치가 실패한다).
+# - 배포(Streamlit Cloud): 아래처럼 rag_common의 GitHub 레포를 git+https로
+#   설치한다. <github-username>을 실제 계정으로 바꿔야 한다.
+git+https://github.com/<github-username>/rag_common.git
+
+PyMuPDF==1.24.9
+psycopg[binary]==3.2.1
+pgvector==0.3.2
+python-dotenv==1.0.1
+voyageai==0.3.1
+streamlit==1.38.0
