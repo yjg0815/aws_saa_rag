@@ -7,7 +7,11 @@
 # - 배포(Streamlit Cloud): 아래처럼 rag_common의 GitHub 레포를 git+https로 설치한다.
 git+https://github.com/yjg0815/rag_common.git
 
-PyMuPDF==1.24.9
+# 1.24.9는 manylinux 휠이 cp312(Python 3.12)까지만 있어서, Streamlit Cloud가
+# 그보다 최신 Python(3.13/3.14 등)으로 빌드하면 소스 빌드로 떨어져 배포가
+# 멈추거나 실패한다(실제로 겪음). 1.28.2는 Python 3.10~3.14까지 휠을 제공해서
+# 이 문제를 피한다.
+PyMuPDF==1.28.2
 psycopg[binary]==3.2.1
 pgvector==0.3.2
 python-dotenv==1.0.1

@@ -12,7 +12,9 @@
 # 전체를 텍스트 청크로 만들어 임베딩하는 용도라 표를 별도 구조로 보존할
 # 필요가 없으므로, 더 단순하고 빠른 PyMuPDF만 쓴다.
 
-import fitz
+# "import fitz"는 옛 별칭이고 PyMuPDF가 향후 제거 예정이라고 경고하므로
+# 정식 모듈명(pymupdf)을 fitz로 alias해서 쓴다 — 나머지 코드는 그대로 유지.
+import pymupdf as fitz
 
 
 def extract_pdf_pages(pdf_path: str) -> list[dict]:
