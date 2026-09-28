@@ -46,6 +46,7 @@ _load_secrets_into_env()
 
 from rag_common.voyage import get_voyage_client  # noqa: E402 (secrets를 env로 옮긴 뒤 import)
 
+from generation.answer import build_prompt  # noqa: E402
 from retrieval.search import search  # noqa: E402
 from storage.db import get_connection  # noqa: E402
 
@@ -108,3 +109,8 @@ if st.button("검색", type="primary") and query.strip():
         with st.container(border=True):
             st.markdown(f"**[{i}] p.{r['page_number']} · {chapter}**{score_label}")
             st.write(r["chunk_text"])
+
+    if results:
+        st.subheader("복붙용 프롬프트")
+        st.caption("아래 블록을 그대로 복사해서 Claude 채팅에 붙여넣으면 됩니다.")
+        st.code(build_prompt(query, results), language=None)
