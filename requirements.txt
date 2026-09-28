@@ -13,7 +13,13 @@ git+https://github.com/yjg0815/rag_common.git
 # 이 문제를 피한다.
 PyMuPDF==1.28.2
 psycopg[binary]==3.2.1
-pgvector==0.3.2
+# 0.3.2는 Requires-Python<3.14라 Streamlit Cloud(Python 3.14 기본)에서 설치가
+# 안 됐다. 0.5.0은 "from pgvector.psycopg import Vector, register_vector" 경로를
+# 제거하는 breaking change라 그 직전 버전인 0.4.2로 맞췄다(rag_common도 동일).
+pgvector==0.4.2
 python-dotenv==1.0.1
-voyageai==0.3.1
+# 0.3.1은 Requires-Python<3.13이라 마찬가지로 설치가 안 됐다. 0.4.1로 올렸고
+# embed()/rerank() 시그니처, voyageai.error.RateLimitError 모두 그대로라
+# rag_common.voyage를 안 고치고도 호환됨을 실측으로 확인했다(rag_common도 동일).
+voyageai==0.4.1
 streamlit==1.38.0
